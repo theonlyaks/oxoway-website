@@ -6,8 +6,8 @@ export default function FeatureCardOne() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
           <div className="w-full md:w-1/2">
-            <h2 className="text-xl md:text-2xl font-semibold mb-8">Our features</h2>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Daily news analysis</h3>
+            <h2 className="text-xl md:text-2xl font-semibold mb-8 text-gray-800">Our features</h2>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">Daily news analysis</h3>
             <p className="text-gray-600">
               Stay updated with our concise and insightful daily news analysis, tailored
               specifically for UPSC aspirants. Enhance your current affairs knowledge and stay

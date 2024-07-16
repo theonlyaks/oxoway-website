@@ -6,8 +6,8 @@ export default function PricePointSection() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
           <div className="w-full md:w-1/2">
-            <h2 className="text-lg font-semibold mb-2">Our features</h2>
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">Mind blowing Price point</h3>
+            <h2 className="text-lg font-semibold mb-2 text-gray-800">Our features</h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Mind blowing Price point</h3>
             <p className="text-gray-600">
               Experience top-notch UPSC preparation at an unbeatable price of just 20 rupees per answer. 
               Quality guidance and affordability, all in one package.

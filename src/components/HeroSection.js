@@ -68,7 +68,6 @@ export default function HeroSection() {
         <header className="mb-16 flex justify-between items-center bg-white rounded-full px-4 py-2">
           <div className="flex items-center">
             <img src="/logo.png" alt="Logo" className="w-8 h-8 rounded-full mr-2" />
-            {/* <h2 className="text-black font-semibold text-lg">Oxoway</h2> */}
           </div>
           <button onClick={handlePreRegister} className="bg-gray-900 text-white px-4 py-2 rounded-full text-sm">
             Pre-register now
@@ -76,7 +75,7 @@ export default function HeroSection() {
         </header>
         <div className="text-center relative">
           <div className="absolute top-0 left-0 text-blue-400 text-2xl">✦</div>
-          <div className="absolute top-16 left-16 text-blue-400 text-4xl">💡</div>
+          {/* <div className="absolute top-16 left-16 text-blue-400 text-4xl">💡</div> */}
           <div className="absolute top-0 right-0 text-blue-400 text-4xl">✦</div>
           <div className="absolute top-16 right-16 text-blue-400 text-2xl">\</div>
           
@@ -86,31 +85,33 @@ export default function HeroSection() {
           <p className="mb-8 text-lg">
             Expert tested guidance from the comfort of your home.
           </p>
-          <div className="inline-flex items-center">
+          <div className="inline-flex flex-col items-center">
             {!showInput ? (
-              <button onClick={handlePreRegister} className="bg-cyan-400 text-black font-semibold px-8 py-3 rounded-full text-lg mr-4">
-                Pre-register now
-              </button>
-            ) : (
-              <form onSubmit={handleSubmit} className={`transition-all duration-500 ease-in-out ${showInput ? 'opacity-100 max-h-20' : 'opacity-0 max-h-0'}`}>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="px-4 py-2 rounded-l-full text-black"
-                  required
-                />
-                <button type="submit" className="bg-cyan-400 text-black font-semibold px-4 py-2 rounded-r-full">
-                  Submit
+              <div className="flex flex-col items-center">
+                <button onClick={handlePreRegister} className="bg-cyan-400 text-black font-semibold px-8 py-3 rounded-full text-lg mb-4">
+                  Pre-register now
                 </button>
-              </form>
-            )}
-            {!showInput && (
-              <div className="flex items-center text-sm">
-                <span className="bg-green-500 w-2 h-2 rounded-full mr-2"></span>
-                <span className="text-gray-300">{spotsLeft} spots left</span>
+                <div className="flex items-center text-sm">
+                  <span className="bg-green-500 w-2 h-2 rounded-full mr-2"></span>
+                  <span className="text-gray-300">{spotsLeft} spots left</span>
+                </div>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit} className={`transition-all duration-500 ease-in-out ${showInput ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0'}`}>
+                <div className="flex flex-col sm:flex-row">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="px-4 py-2 rounded-full sm:rounded-r-none text-black mb-2 sm:mb-0"
+                    required
+                  />
+                  <button type="submit" className="bg-cyan-400 text-black font-semibold px-4 py-2 rounded-full sm:rounded-l-none">
+                    Submit
+                  </button>
+                </div>
+              </form>
             )}
           </div>
           {registered && (

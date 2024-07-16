@@ -80,32 +80,32 @@ export default function GetEdgeSection() {
         </h2>
         
         {!showInput ? (
-          <div>
+          <div className="flex flex-col items-center">
             <button 
               onClick={handlePreRegister} 
-              className="bg-cyan-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-cyan-300 transition duration-300"
+              className="bg-cyan-400 text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-cyan-300 transition duration-300 mb-4"
             >
               Pre-register now
             </button>
-            <div className="mt-4 text-sm">
+            <div className="text-sm">
               <span className="bg-green-500 w-2 h-2 rounded-full inline-block mr-2"></span>
               <span>{spotsLeft} spots left</span>
             </div>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-4">
-            <div className="flex justify-center">
+            <div className="flex flex-col sm:flex-row justify-center">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="px-4 py-2 rounded-l-full text-black"
+                className="px-4 py-2 rounded-full sm:rounded-r-none text-black mb-2 sm:mb-0 w-full sm:w-auto"
                 required
               />
               <button 
                 type="submit" 
-                className="bg-cyan-400 text-gray-900 font-bold px-6 py-2 rounded-r-full hover:bg-cyan-300 transition duration-300"
+                className="bg-cyan-400 text-gray-900 font-bold px-6 py-2 rounded-full sm:rounded-l-none hover:bg-cyan-300 transition duration-300 w-full sm:w-auto"
               >
                 Submit
               </button>
