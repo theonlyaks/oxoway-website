@@ -13,15 +13,15 @@ const teamMembers = [
     name: 'Abhishek Singh',
     role: 'Development Lead',
     description: 'Spearheading development with technical expertise',
-    image: '/one.png',
-    linkedIn: 'https://www.linkedin.com/in/abhishek-singh/',
+    image: '/aks2.jpeg',
+    linkedIn: 'https://www.linkedin.com/in/abhishek-kumar-singh-042b0a1b2/',
   },
   {
     name: 'Lakshya Rastogi',
     role: 'Marketing Lead',
     description: 'Empathy, creativity and precision. 3x mains UPSC',
-    image: '/one.png',
-    linkedIn: 'https://www.linkedin.com/in/lakshya-rastogi/',
+    image: '/lr.jpeg',
+    linkedIn: 'https://www.linkedin.com/in/lakshya-rastogi-b2a27618a/',
   },
 ];
 
