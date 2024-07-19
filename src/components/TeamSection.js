@@ -13,7 +13,7 @@ const teamMembers = [
     name: 'Abhishek Singh',
     role: 'Development Lead',
     description: 'Spearheading development with technical expertise',
-    image: '/aks2.jpeg',
+    image: '/one.png',
     linkedIn: 'https://www.linkedin.com/in/abhishek-kumar-singh-042b0a1b2/',
   },
   {

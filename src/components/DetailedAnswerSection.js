@@ -1,8 +1,18 @@
-import Image from 'next/image';
+import { useRef, useEffect } from 'react';
 
 export default function DetailedAnswerSection() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.log("Auto-play was prevented:", error);
+      });
+    }
+  }, []);
+
   return (
-    <section className="bg-gray-900 text-white py-16 px-4 md:px-8 lg:px-16">
+    <section className="bg-black text-white py-16 px-4 md:px-8 lg:px-16">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
           <div className="w-full md:w-1/2">
@@ -13,27 +23,31 @@ export default function DetailedAnswerSection() {
               Identify your strengths, work on your weaknesses, and elevate your UPSC preparation to the next level.
             </p>
           </div>
-          <div className="w-full md:w-1/2">
-            <div className="relative w-full" style={{ paddingTop: '56.25%' }}> {/* 16:9 Aspect Ratio */}
-              <Image
-                src="/one.png"
-                alt="Detailed answer report on phone"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg shadow-lg"
-              />
-              {/* Mobile phone overlay */}
-              {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div style={{ width: '200px', height: '400px', position: 'relative' }}>
-                  <Image
-                    src="/ga.png" // Replace with your actual mobile screen image
-                    alt="Mobile screen with detailed answer report"
-                    layout="fill"
-                    objectFit="contain"
-                    className="rounded-lg shadow-lg"
-                  />
-                </div>
-              </div> */}
+          <div className="w-full md:w-1/2 relative">
+            <div className="aspect-[9/16] max-w-[280px] mx-auto relative">
+              {/* Background image behind the phone */}
+              {/* <div 
+                className="absolute inset-0 rounded-[2rem] overflow-hidden"
+                style={{
+                  backgroundImage: 'url(/one.png)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              ></div> */}
+              {/* Phone frame */}
+              <div className="absolute inset-0 bg-white bg-opacity-10 rounded-[2rem] overflow-hidden shadow-lg">
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover"
+                  loop
+                  muted
+                  playsInline
+                  controls
+                >
+                  <source src="/mvp.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </div>
         </div>
