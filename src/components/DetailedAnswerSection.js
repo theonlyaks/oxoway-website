@@ -16,7 +16,7 @@ export default function DetailedAnswerSection() {
           <div className="w-full md:w-1/2">
             <div className="relative w-full" style={{ paddingTop: '56.25%' }}> {/* 16:9 Aspect Ratio */}
               <Image
-                src="/two.png"
+                src="/one.png"
                 alt="Detailed answer report on phone"
                 layout="fill"
                 objectFit="cover"

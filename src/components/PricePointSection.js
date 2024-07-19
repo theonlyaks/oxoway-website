@@ -16,7 +16,7 @@ export default function PricePointSection() {
           <div className="w-full md:w-1/2">
             <div className="relative w-full" style={{ paddingTop: '56.25%' }}> {/* 16:9 Aspect Ratio */}
               <Image
-                src="/three.png"
+                src="/two.png"
                 alt="Mind blowing price illustration"
                 layout="fill"
                 objectFit="cover"
