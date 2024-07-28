@@ -11,9 +11,9 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <HeroSection />
-      <FeatureCardOne />
-      <DetailedAnswerSection/>
       <PricePointSection/>
+      <DetailedAnswerSection/>
+      <FeatureCardOne />
       <TeamSection/>
       <GetEdgeSection/>
       <FooterSection/>
