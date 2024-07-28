@@ -23,13 +23,41 @@ export default function Home() {
     setIsSubmitting(true);
 
     try {
-      await addDoc(collection(db, 'news'), {
+      const docRef = await addDoc(collection(db, 'news'), {
         title,
         displayContent,
         content,
         category,
         createdAt: new Date()
       });
+  
+      // Get the ID of the newly inserted document
+      const newDocId = docRef.id;
+  
+      // Prepare the data_set with the new document ID
+      const data_set = {
+        newsId: newDocId
+      };
+
+      const notificationResponse = await fetch('https://us-central1-oxoway-app.cloudfunctions.net/sendNotificationToAll', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: 'New News Article',
+          body: `A new article in the category ${category} has been posted.`,
+          buttons: ['View'],
+          data_set:data_set
+        }),
+      });
+  
+      if (!notificationResponse.ok) {
+        throw new Error('Failed to send notification');
+      }
+  
+      console.log('Notification sent successfully');
+
 
       setTitle('');
       setDisplayContent('');
