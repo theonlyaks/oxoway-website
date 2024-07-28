@@ -36,7 +36,7 @@ export default function Home() {
   
       // Prepare the data_set with the new document ID
       const data_set = {
-        newsId: newDocId
+        requestId: newDocId
       };
 
       const notificationResponse = await fetch('https://us-central1-oxoway-app.cloudfunctions.net/sendNotificationToAll', {
@@ -45,10 +45,11 @@ export default function Home() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          title: 'New News Article',
-          body: `A new article in the category ${category} has been posted.`,
+          title: 'Current affairs update',
+          body: title,
           buttons: ['View'],
-          data_set:data_set
+          data_set: data_set // Include the data_set in the request body
+
         }),
       });
   
