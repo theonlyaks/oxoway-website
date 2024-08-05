@@ -74,10 +74,10 @@ export default function HeroSection() {
           </button>
         </header>
         <div className="text-center relative">
-          <div className="absolute top-0 left-0 text-blue-400 text-2xl">✦</div>
+          {/* <div className="absolute top-0 left-0 text-blue-400 text-2xl">✦</div> */}
           {/* <div className="absolute top-16 left-16 text-blue-400 text-4xl">💡</div> */}
-          <div className="absolute top-0 right-0 text-blue-400 text-4xl">✦</div>
-          <div className="absolute top-16 right-16 text-blue-400 text-2xl">\</div>
+          {/* <div className="absolute top-0 right-0 text-blue-400 text-4xl">✦</div>
+          <div className="absolute top-16 right-16 text-blue-400 text-2xl">\</div> */}
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Best UPSC AI mentor vetted by experts
