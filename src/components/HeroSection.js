@@ -8,6 +8,7 @@ export default function HeroSection() {
   const [registered, setRegistered] = useState(false);
   const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   const [spotsLeft, setSpotsLeft] = useState(100);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchRegistrations = async () => {
@@ -26,13 +27,12 @@ export default function HeroSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateEmail(email)) {
+      setIsLoading(true);
       try {
-        // Check if email already exists
         const emailQuery = query(collection(db, "pre_registration"), where("email", "==", email));
         const querySnapshot = await getDocs(emailQuery);
         
         if (querySnapshot.empty) {
-          // Email doesn't exist, proceed with registration
           await addDoc(collection(db, "pre_registration"), {
             email: email,
             timestamp: new Date()
@@ -40,14 +40,18 @@ export default function HeroSection() {
           setRegistered(true);
           setAlreadyRegistered(false);
           setSpotsLeft(prevSpots => Math.max(0, prevSpots - 1));
+          setEmail('');  // Clear the input
+
         } else {
-          // Email already exists
           setAlreadyRegistered(true);
           setRegistered(false);
+          
         }
       } catch (error) {
         console.error("Error checking/adding document: ", error);
         alert('An error occurred. Please try again.');
+      } finally {
+        setIsLoading(false);
       }
     } else {
       alert('Please enter a valid email address');
@@ -74,11 +78,6 @@ export default function HeroSection() {
           </button>
         </header>
         <div className="text-center relative">
-          {/* <div className="absolute top-0 left-0 text-blue-400 text-2xl">✦</div> */}
-          {/* <div className="absolute top-16 left-16 text-blue-400 text-4xl">💡</div> */}
-          {/* <div className="absolute top-0 right-0 text-blue-400 text-4xl">✦</div>
-          <div className="absolute top-16 right-16 text-blue-400 text-2xl">\</div> */}
-          
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Best UPSC AI mentor vetted by experts
           </h1>
@@ -98,7 +97,7 @@ export default function HeroSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className={`transition-all duration-500 ease-in-out ${showInput ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0'}`}>
-                <div className="flex flex-col sm:flex-row">
+                <div className="flex flex-col sm:flex-row items-center">
                   <input
                     type="email"
                     value={email}
@@ -106,9 +105,15 @@ export default function HeroSection() {
                     placeholder="Enter your email"
                     className="px-4 py-2 rounded-full sm:rounded-r-none text-black mb-2 sm:mb-0"
                     required
+                    disabled={isLoading}
                   />
-                  <button type="submit" className="bg-cyan-400 text-black font-semibold px-4 py-2 rounded-full sm:rounded-l-none">
-                    Submit
+                  <button type="submit" className="bg-cyan-400 text-black font-semibold px-4 py-2 w-full rounded-full sm:rounded-l-none flex items-center justify-center" disabled={isLoading}>
+                    {isLoading ? (
+                      <svg className="animate-spin h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    ) : 'Submit'}
                   </button>
                 </div>
               </form>
