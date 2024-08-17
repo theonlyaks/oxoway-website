@@ -53,9 +53,9 @@ export default function Home() {
         }),
       });
   
-      if (!notificationResponse.ok) {
-        throw new Error('Failed to send notification');
-      }
+      // if (!notificationResponse.ok) {
+      //   throw new Error('Failed to send notification');
+      // }
   
       console.log('Notification sent successfully');
 
