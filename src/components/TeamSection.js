@@ -56,9 +56,9 @@ function TeamMemberCard({ member }) {
       <p className="text-cyan-500 mb-2">{member.role}</p>
       <p className="text-gray-600 mb-4">{member.description}</p>
       <div className="flex justify-center space-x-4">
-        <Link href={member.linkedIn} target="_blank" rel="noopener noreferrer">
+        {/* <Link href={member.linkedIn} target="_blank" rel="noopener noreferrer">
           <LinkedInIcon />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
