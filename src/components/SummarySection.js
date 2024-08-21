@@ -11,7 +11,7 @@ const SummarySection = ({ data }) => {
       </h2>
       {Object.entries(data).map(([key, value]) => (
         <div key={key} className="mb-4">
-          <h3 className="font-semibold text-lg mb-2 capitalize">{key}</h3>
+          <h3 className="font-semibold text-base mb-2 capitalize">{key}</h3>
           <ul className="list-disc list-inside">
             {value.map((item, index) => (
               <li key={index} className="text-gray-700">{item}</li>

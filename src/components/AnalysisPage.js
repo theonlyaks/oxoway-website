@@ -76,7 +76,7 @@ const AnalysisPage = ({ questionData }) => {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`flex-1 py-4 sm:py-4 px-2 sm:px-4 text-center text-sm ${
+                className={`flex-1 font-medium py-4 sm:py-4 px-2 sm:px-4 text-center text-sm ${
                   activeTab === tab.key
                     ? 'border-b-2 border-blue-500 text-blue-600'
                     : 'text-gray-500 hover:text-gray-700'
