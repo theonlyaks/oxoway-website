@@ -54,7 +54,7 @@ const AnalysisPage = ({ questionData }) => {
               </svg>
             </button>
             {isQuestionExpanded && (
-              <div className="px-4 sm:px-6 py-3 sm:py-4">
+              <div className="px-4 sm:px-6 pb-3 sm:pb-4">
                 <p className="text-gray-700 text-base">{questionData.question}</p>
                 <div className="mt-3 sm:mt-4 flex justify-between items-center">
                   <span className="text-blue-600 font-semibold text-base">
