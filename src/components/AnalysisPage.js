@@ -38,7 +38,7 @@ const AnalysisPage = ({ questionData }) => {
               onClick={() => setIsQuestionExpanded(!isQuestionExpanded)}
               className="w-full px-4 sm:px-6 py-3 sm:py-4 text-left text-sm sm:text-base font-semibold flex justify-between items-center"
             >
-              <span>Question</span>
+              <span className='text-lg'>Question</span>
               <svg
                 className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${
                   isQuestionExpanded ? 'transform rotate-180' : ''
