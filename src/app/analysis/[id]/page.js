@@ -25,7 +25,7 @@ const getQuestionData = cache(async (docId) => {
 export async function generateMetadata({ params }) {
   const questionData = await getQuestionData(params.id);
   return {
-    title: questionData ? `UPSC Question Analysis - ${questionData.question}` : 'Question Analysis',
+    title: questionData ? `${questionData.question}` : 'Question Analysis',
   };
 }
 

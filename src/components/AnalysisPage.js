@@ -55,9 +55,9 @@ const AnalysisPage = ({ questionData }) => {
             </button>
             {isQuestionExpanded && (
               <div className="px-4 sm:px-6 py-3 sm:py-4">
-                <p className="text-gray-700 text-sm sm:text-base">{questionData.question}</p>
+                <p className="text-gray-700 text-base">{questionData.question}</p>
                 <div className="mt-3 sm:mt-4 flex justify-between items-center">
-                  <span className="text-blue-600 font-semibold text-sm sm:text-base">
+                  <span className="text-blue-600 font-semibold text-base">
                     {questionData.marks_total}/10
                   </span>
                   <div>
@@ -76,7 +76,7 @@ const AnalysisPage = ({ questionData }) => {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`flex-1 py-4 sm:py-4 px-2 sm:px-4 text-center text-xs sm:text-sm ${
+                className={`flex-1 py-4 sm:py-4 px-2 sm:px-4 text-center text-sm ${
                   activeTab === tab.key
                     ? 'border-b-2 border-blue-500 text-blue-600'
                     : 'text-gray-500 hover:text-gray-700'
