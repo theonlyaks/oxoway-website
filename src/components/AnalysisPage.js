@@ -29,7 +29,7 @@ const AnalysisPage = ({ questionData }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center">
+    <div className="text-black min-h-screen bg-gray-100 flex justify-center">
       <main className="w-full max-w-2xl px-2 sm:px-4 py-4 sm:py-8">
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           {/* Question Section */}
