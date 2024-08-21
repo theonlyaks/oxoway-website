@@ -2,6 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  @apply font-sans antialiased text-gray-900 bg-gray-100;
+}
+
+.formatted-text {
+  @apply text-base leading-relaxed;
+}
+
+.formatted-text p {
+  @apply mb-4;
+}
+
+.formatted-text ul, .formatted-text ol {
+  @apply mb-4 pl-5;
+}
+
+.formatted-text ul {
+  @apply list-disc;
+}
+
+.formatted-text ol {
+  @apply list-decimal;
+}
+
+.formatted-text h1, .formatted-text h2, .formatted-text h3, .formatted-text h4, .formatted-text h5, .formatted-text h6 {
+  @apply font-bold mt-6 mb-4;
+}
+
+.formatted-text h1 {
+  @apply text-3xl;
+}
+
+.formatted-text h2 {
+  @apply text-2xl;
+}
+
+.formatted-text h3 {
+  @apply text-xl;
+}
+
+.formatted-text a {
+  @apply text-blue-600 hover:underline;
+}
+
+.formatted-text blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic my-4;
+}
+
+.formatted-text code {
+  @apply bg-gray-100 rounded px-1 py-0.5 font-mono text-sm;
+}
+
+.formatted-text pre {
+  @apply bg-gray-100 rounded p-4 overflow-x-auto my-4;
+}
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
