@@ -7,7 +7,7 @@ import { cache } from 'react';
 
 const getQuestionData = cache(async (docId) => {
   try {
-    const docRef = doc(db, "ocr_requests", docId);
+    const docRef = doc(db, "ocr_2requests", docId);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
