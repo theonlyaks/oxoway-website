@@ -7,10 +7,10 @@ import ImproveSection from './ImproveSection';
 const FeedbackContent = ({ data }) => {
   return (
     <div>
-      <SummarySection data={data.summary} />
       <MarksSection data={data.marks} />
       <FeedbackSection data={data.feedback} />
       <ImproveSection data={data.improve} />
+      <SummarySection data={data.summary} />
     </div>
   );
 };
