@@ -1,11 +1,11 @@
-// components/Header.js
+// components/HeaderAnalysis.js
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HeaderAnalysis() {
   return (
-    <>
+    <div className="fixed top-0 left-0 right-0 z-50">
       <header className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-6 flex justify-between items-center h-12 sm:h-16">
           <Link href="/" className="flex items-center">
@@ -22,19 +22,19 @@ export default function HeaderAnalysis() {
             href="https://play.google.com/store/apps/details?id=com.oxoway" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="bg-purple-600 hover:bg-purple-400 text-white font-bold text-xs sm:text-sm py-3 sm:py-3 px-3 sm:px-4 rounded"
+            className="bg-purple-600 hover:bg-purple-400 text-white font-bold text-xs sm:text-sm py-[10px] px-3 sm:px-4 rounded"
           >
             Download
           </a>
         </div>
       </header>
-      <div className="bg-purple-600 py-2 sm:py-4">
+      <div className="bg-purple-600 py-[10px]">
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
           <h2 className="text-white text-sm sm:text-base lg:text-lg font-semibold text-center">
             Download the App and start your success
           </h2>
         </div>
       </div>
-    </>
+    </div>
   );
 }
