@@ -7,7 +7,7 @@ export default function HeaderAnalysis() {
   return (
     <>
       <header className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-2 sm:px-4 lg:px-6 flex justify-between items-center h-12 sm:h-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-6 flex justify-between items-center h-12 sm:h-16">
           <Link href="/" className="flex items-center">
             <Image 
               src="/logo.png" 
@@ -22,7 +22,7 @@ export default function HeaderAnalysis() {
             href="https://play.google.com/store/apps/details?id=com.oxoway" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="bg-purple-600 hover:bg-purple-400 text-white font-bold text-xs sm:text-sm py-1 sm:py-2 px-3 sm:px-4 rounded"
+            className="bg-purple-600 hover:bg-purple-400 text-white font-bold text-xs sm:text-sm py-3 sm:py-3 px-3 sm:px-4 rounded"
           >
             Download
           </a>
