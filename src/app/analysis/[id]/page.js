@@ -54,7 +54,7 @@ async function AnalysisContent({ docId }) {
 
   return (
     <main>
-      <AnalysisPage questionData={questionData.content} />
+      <AnalysisPage questionData={questionData.content}  answerImages={questionData.images}/>
     </main>
   );
 }
