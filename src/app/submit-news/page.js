@@ -1,74 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { db } from '../../lib/firebase'; // Adjust the import path as needed
-import { collection, addDoc } from 'firebase/firestore';
+import { httpsCallable } from "firebase/functions";
+import { functions } from '../../lib/firebase'; // Adjust the path as needed
 
 export default function Home() {
-  const [title, setTitle] = useState('');
-  const [displayContent, setDisplayContent] = useState('');
-  const [content, setContent] = useState('');
-  const [category, setCategory] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!title.trim() || !displayContent.trim() || !content.trim() || !category.trim()) {
-      alert('Please fill in all fields');
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
-      const docRef = await addDoc(collection(db, 'news'), {
-        title,
-        displayContent,
-        content,
-        category,
-        createdAt: new Date()
-      });
-  
-      // Get the ID of the newly inserted document
-      const newDocId = docRef.id;
-  
-      // Prepare the data_set with the new document ID
-      const data_set = {
-        requestId: newDocId
-      };
+      const submitNews = httpsCallable(functions, 'submitNews');
 
-      const notificationResponse = await fetch('https://us-central1-oxoway-app.cloudfunctions.net/sendNotificationToAll', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title: 'Current affairs update',
-          body: title,
-          buttons: ['View'],
-          data_set: data_set // Include the data_set in the request body
+      const result = await submitNews();
+      console.log('News submitted successfully:', result.data);
 
-        }),
-      });
-  
-      // if (!notificationResponse.ok) {
-      //   throw new Error('Failed to send notification');
-      // }
-  
-      console.log('Notification sent successfully');
-
-
-      setTitle('');
-      setDisplayContent('');
-      setContent('');
-      setCategory('');
       setShowPopup(true);
-
       setTimeout(() => setShowPopup(false), 3000);
     } catch (error) {
-      console.error('Error adding document: ', error);
+      console.error('Error submitting news:', error);
       alert('An error occurred while submitting the news');
     } finally {
       setIsSubmitting(false);
@@ -81,50 +34,6 @@ export default function Home() {
         <div className="px-4 py-5 sm:p-6">
           <h1 className="text-3xl font-extrabold text-gray-900 text-center mb-6">Submit News</h1>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
-              <input
-                type="text"
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="mt-1 block w-full border text-black border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="displayContent" className="block text-sm font-medium text-gray-700">Display Content</label>
-              <textarea
-                id="displayContent"
-                value={displayContent}
-                onChange={(e) => setDisplayContent(e.target.value)}
-                rows="2"
-                className="mt-1 block w-full border text-black border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              ></textarea>
-            </div>
-            <div>
-              <label htmlFor="content" className="block text-sm font-medium text-gray-700">Full Content</label>
-              <textarea
-                id="content"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                rows="4"
-                className="mt-1 block text-black w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              ></textarea>
-            </div>
-            <div>
-              <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
-              <input
-                type="text"
-                id="category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="mt-1 block w-full border text-black border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
             <div>
               <button
                 type="submit"
