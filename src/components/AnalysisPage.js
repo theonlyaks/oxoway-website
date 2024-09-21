@@ -21,11 +21,11 @@ const AnalysisPage = ({ questionData, answerImages }) => {
   const renderTabContent = () => {
     switch (activeTab) {
       case "feedback":
-        return <FeedbackContent data={questionData.feedback} />;
+        return <FeedbackContent data={questionData.content.feedback} />;
       case "idealAnswer":
-        return <IdealAnswerContent data={questionData.ideal_answer} />;
+        return <IdealAnswerContent data={questionData.content.ideal_answer} />;
       case "learn":
-        return <LearnContent data={questionData.learn} />;
+        return <LearnContent data={questionData.content.learn} />;
       default:
         return null;
     }
@@ -76,43 +76,52 @@ const AnalysisPage = ({ questionData, answerImages }) => {
                 </p>
                 <div className="mt-3 sm:mt-4 flex justify-between items-center">
                   <div className="flex items-center space-x-2">
-                    <span className="text-blue-600 font-semibold text-base">
-                      {questionData.marks_total}/10
-                    </span>
+                  {questionData.type != 2 ? <span className="text-blue-600 font-semibold text-base">
+                      {questionData.content.marks_total}/10
+                    </span>:<></>}
                     <span className="bg-red-100 text-red-800 text-xs font-medium px-2 py-0.5 rounded-full">
                       {questionData.subject}
                     </span>
                   </div>
-                  <button
+                  {questionData.type != 2 ? <button
                     onClick={openModal}
                     className="text-blue-600 border border-blue-600 text-xs font-medium px-3 py-1 rounded-full hover:bg-blue-50 transition-colors duration-300"
                   >
                     Your Answer
-                  </button>
+                  </button>:<></>}
+                 
                 </div>
               </div>
             )}
           </div>
 
-          {/* Tabs */}
-          <div className="flex border-b border-gray-200">
-            {tabs.map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={`flex-1 font-medium py-4 sm:py-4 px-2 sm:px-4 text-center text-sm ${
-                  activeTab === tab.key
-                    ? "border-b-2 border-blue-500 text-blue-600"
-                    : "text-gray-500 hover:text-gray-700"
-                }`}
-              >
-                {tab.title}
-              </button>
-            ))}
-          </div>
+          {questionData.type === 2 ? (
+            <div className="p-4 sm:p-6">
+              <IdealAnswerContent data={questionData.answer} />
+            </div>
+          ) : (
+            <>
+              {/* Tabs */}
+              <div className="flex border-b border-gray-200">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key)}
+                    className={`flex-1 font-medium py-4 sm:py-4 px-2 sm:px-4 text-center text-sm ${
+                      activeTab === tab.key
+                        ? "border-b-2 border-blue-500 text-blue-600"
+                        : "text-gray-500 hover:text-gray-700"
+                    }`}
+                  >
+                    {tab.title}
+                  </button>
+                ))}
+              </div>
 
-          {/* Tab Content */}
-          <div className="p-4 sm:p-6">{renderTabContent()}</div>
+              {/* Tab Content */}
+              <div className="p-4 sm:p-6">{renderTabContent()}</div>
+            </>
+          )}
         </div>
       </main>
 

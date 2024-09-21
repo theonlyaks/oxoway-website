@@ -54,7 +54,7 @@ async function AnalysisContent({ docId }) {
 
   return (
     <main className="pt-24 bg-gray-100"> {/* Added padding-top to account for fixed header */}
-      <AnalysisPage questionData={questionData.content} answerImages={questionData.images}/>
+      <AnalysisPage  questionData={questionData} answerImages={questionData.images}/>
     </main>
   );
 }
